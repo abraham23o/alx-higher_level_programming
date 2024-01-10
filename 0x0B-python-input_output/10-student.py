@@ -13,6 +13,6 @@ class Student:
 
     def to_json(self, attrs=None):
         """returns specified student attributes"""
-        if attrs is None:
-            return self.__dict__
-        return {key: value for key, value in self.__dict__.items() if key in attrs}
+        if type(attrs) is list and all(type(i) is str for i in attrs):
+            return {k: getattr(self, k) for k in attrs if hasattr(self, k)}
+        return self.__dict__
