@@ -24,10 +24,30 @@ class Rectangle(Base):
 
     @property
     def x(self):
-        """get the x"""
+        """get x"""
         return self.__x
 
     @property
     def y(self):
-        """get the y"""
+        """get y"""
         return self.__y
+
+    @width.setter
+    def width(self, val):
+        """set the width"""
+        self.__width = val
+
+    @height.setter
+    def height(self, val):
+        """set the height"""
+        self.__height = val
+
+    @x.setter
+    def x(self, val):
+        """set x"""
+        self.__x = val
+
+    @y.setter
+    def y(self, val):
+        """set y"""
+        self.__y = val
