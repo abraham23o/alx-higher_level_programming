@@ -54,8 +54,6 @@ class Rectangle(Base):
         """set the width"""
         if not isinstance(val, int) or isinstance(val, bool):
             raise TypeError("width must be an integer")
-        if width <= 0:
-            raise ValueError("width must be > 0")
         self.__width = val
 
     @height.setter
@@ -63,8 +61,6 @@ class Rectangle(Base):
         """set the height"""
         if not isinstance(val, int) or isinstance(val, bool):
             raise TypeError("height must be an integer")
-        if height <= 0:
-            raise ValueError("height must be > 0")
         self.__height = val
 
     @x.setter
@@ -72,8 +68,6 @@ class Rectangle(Base):
         """set x"""
         if not isinstance(val, int) or isinstance(val, bool):
             raise TypeError("x must be an integer")
-        if x < 0:
-            raise ValueError("x must be >= 0")
         self.__x = val
 
     @y.setter
@@ -81,10 +75,21 @@ class Rectangle(Base):
         """set y"""
         if not isinstance(val, int) or isinstance(val, bool):
             raise TypeError("y must be an integer")
-        if y < 0:
-            raise ValueError("y must be >= 0")
         self.__y = val
 
     def area(self):
         """gets the area of rectangle"""
         return self.__width * self.__height
+
+    def display(self):
+        """print a rectangle using '#"""
+        rect = ""
+        for i in range(self.__height):
+            rect += '#' * self.__width
+            if i < self.__height - 1:
+                rect += '\n'
+        print(rect)
+
+    def __str__(self):
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.__x,
+                                                       self.__y, self.__width, self.__height)
