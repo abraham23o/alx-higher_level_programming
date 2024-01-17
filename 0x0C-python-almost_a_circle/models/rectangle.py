@@ -84,12 +84,15 @@ class Rectangle(Base):
     def display(self):
         """print a rectangle using '#"""
         rect = ""
+        rect += "\n" * self.__y
         for i in range(self.__height):
+            rect += '' * self.__x
             rect += '#' * self.__width
             if i < self.__height - 1:
                 rect += '\n'
         print(rect)
 
     def __str__(self):
+        """string representation of an object"""
         return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.__x,
                                                        self.__y, self.__width, self.__height)
