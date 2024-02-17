@@ -5,4 +5,5 @@ FROM hbtn_0d_usa.cities
 WHERE state_id = (
 SELECT state_id
 FROM hbtn_0d_usa.cities
-WHERE id = 1);
+WHERE id = 1)
+ORDER BY id;
