@@ -1,5 +1,4 @@
--- lists all genres from hbtn_0d_tvshows and
--- displays the number of shows linked to each
+-- lists all genres of the show Dexter
 SELECT name
 FROM tv_genres
 LEFT JOIN tv_show_genres
