@@ -1,4 +1,5 @@
 -- list all cities in hbtn_0d_usa
 SELECT cities.id, cities.name, states.name
-FROM hbtn_0d_usa
+FROM cities LEFT JOIN states
+ON states.id = cities.state_id
 ORDER BY cities.id;
