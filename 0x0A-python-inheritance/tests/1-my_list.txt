@@ -126,7 +126,7 @@ Nothing to sort with empty lists.
     >>> my_list.print_sorted()
     []
 
-If ``print_sorted(...)`` is called on a list of different types, a TypeError
+If ``print_sorted()`` is called on a list of different types, a TypeError
 will be raised.
 ===============================================================================
 
