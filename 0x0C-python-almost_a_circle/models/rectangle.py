@@ -54,6 +54,8 @@ class Rectangle(Base):
         """set the width"""
         if not isinstance(val, int) or isinstance(val, bool):
             raise TypeError("width must be an integer")
+        if val <= 0:
+            raise ValueError("width must be > 0")
         self.__width = val
 
     @height.setter
@@ -61,6 +63,8 @@ class Rectangle(Base):
         """set the height"""
         if not isinstance(val, int) or isinstance(val, bool):
             raise TypeError("height must be an integer")
+        if val <= 0:
+            raise ValueError("height must be > 0")
         self.__height = val
 
     @x.setter
@@ -68,6 +72,8 @@ class Rectangle(Base):
         """set x"""
         if not isinstance(val, int) or isinstance(val, bool):
             raise TypeError("x must be an integer")
+        if val < 0:
+            raise ValueError("x must be >= 0")
         self.__x = val
 
     @y.setter
@@ -75,6 +81,8 @@ class Rectangle(Base):
         """set y"""
         if not isinstance(val, int) or isinstance(val, bool):
             raise TypeError("y must be an integer")
+        if val < 0:
+            raise ValueError("y must be >= 0")
         self.__y = val
 
     def area(self):
