@@ -5,6 +5,7 @@ from models.base import Base
 
 class Rectangle(Base):
     """My class Rectangle"""
+
     def __init__(self, width, height, x=0, y=0, id=None):
         """constructor"""
         super().__init__(id)
@@ -31,27 +32,27 @@ class Rectangle(Base):
 
     @property
     def width(self):
-        """get the width"""
+        """get the value of width"""
         return self.__width
 
     @property
     def height(self):
-        """get the height"""
+        """get the value of height"""
         return self.__height
 
     @property
     def x(self):
-        """get x"""
+        """get the value of x"""
         return self.__x
 
     @property
     def y(self):
-        """get y"""
+        """get the value of y"""
         return self.__y
 
     @width.setter
     def width(self, val):
-        """set the width"""
+        """set the value of width"""
         if not isinstance(val, int) or isinstance(val, bool):
             raise TypeError("width must be an integer")
         if val <= 0:
@@ -60,7 +61,7 @@ class Rectangle(Base):
 
     @height.setter
     def height(self, val):
-        """set the height"""
+        """set the value of height"""
         if not isinstance(val, int) or isinstance(val, bool):
             raise TypeError("height must be an integer")
         if val <= 0:
@@ -69,7 +70,7 @@ class Rectangle(Base):
 
     @x.setter
     def x(self, val):
-        """set x"""
+        """set the value of x"""
         if not isinstance(val, int) or isinstance(val, bool):
             raise TypeError("x must be an integer")
         if val < 0:
@@ -78,7 +79,7 @@ class Rectangle(Base):
 
     @y.setter
     def y(self, val):
-        """set y"""
+        """set the value of y"""
         if not isinstance(val, int) or isinstance(val, bool):
             raise TypeError("y must be an integer")
         if val < 0:
@@ -103,18 +104,17 @@ class Rectangle(Base):
     def __str__(self):
         """string representation of an object"""
         return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id,
-                self.__x, self.__y, self.__width, self.__height)
+                                                       self.__x, self.__y, self.__width, self.__height)
 
-    def update(self, *args):
-        for i in range(min(len(args), 5)):
-            arg = args[i]
-            if i == 0:
-                self.id = arg
-            elif i == 1:
-                self.__width = arg
-            elif i == 2:
-                self.__height = arg
-            elif i == 3:
-                self.__x = arg
-            else:
-                self.__y = arg
+    def update(self, *args, **kwargs):
+        """
+        public method to update the class Rectangle
+        """
+        if args:
+            lst = ["id", "width", "height", "x", "y"]
+            for i, arg in enumerate(args):
+                setattr(self, lst[i], arg)
+
+        else:
+            for k, v in kwargs.items():
+                setattr(self, k, v)
