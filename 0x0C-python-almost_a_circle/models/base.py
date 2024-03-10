@@ -54,3 +54,29 @@ class Base:
         if len(json_string) == 0 or json_string is None:
             return "[]"
         return json.loads(json_string)
+
+    def update(self, *args, **kwargs):
+        """
+        public method that assigns attributes
+        """
+        if args:
+            attrs = ["id", "size", "x", "y"]
+            for i, arg in enumerate(args):
+                setattr(self, attrs[i], arg)
+
+        else:
+            for k, v in kwargs.items():
+                setattr(self, k, v)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """
+        returns an instance with all attributes already set
+        """
+        my_instance = None
+        if cls.__name__ == "Rectangle":
+            my_instance = cls(height=1, width=5)
+        if cls.__name__ == "Square":
+            my_instance = cls(size=5)
+        my_instance.update(**dictionary)
+        return my_instance
