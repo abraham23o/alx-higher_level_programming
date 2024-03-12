@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/node
 
 // creating a constant variable myVar with value "Javascript is amazing"
 const myVar = 'JavaScript is amazing';
