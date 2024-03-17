@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-This module lists all states in a database
+This module lists all cities in a database
 """
 import MySQLdb
 import sys
@@ -17,10 +17,10 @@ if __name__ == "__main__":
 
     cursor = connection.cursor()
 
-    query = """SELECT * FROM states WHERE name =
-     %s ORDER BY id ASC"""
+    query = """SELECT c.id, c.name, s.name
+     FROM states s, cities c WHERE s.id = c.state_id ORDER BY c.id ASC"""
 
-    cursor.execute(query, (sys.argv[4],))
+    cursor.execute(query)
 
     for i in cursor.fetchall():
         print(i)
