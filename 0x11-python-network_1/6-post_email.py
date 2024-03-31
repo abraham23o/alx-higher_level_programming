@@ -9,6 +9,9 @@ import requests
 from sys import argv
 
 if __name__ == '__main__':
+    if len(argv) != 3:
+        print("Usage: python script.py <URL> <email>")
+        exit(1)
     url = argv[1]
     email = {'email': argv[2]}
 
