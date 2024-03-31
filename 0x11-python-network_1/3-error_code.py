@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 """
 This script takes in a URL, sends a request to the URL and
-displays the value of the X-Request-Id variable
-found in the header of the response
+displays the body of the response
 """
+
+import urllib.error
 import urllib.request
 import sys
 
@@ -16,10 +17,12 @@ url = sys.argv[1]
 
 try:
     with urllib.request.urlopen(url) as response:
-        # Retrieve and display the value of the X-Request-Id header
-        x_request_id = response.getheader('X-Request-Id')
-        print(x_request_id)
+        # Retrieve and display the body of the response
+        response_body = response.read().decode('utf-8')
+        print(response_body)
 
+except urllib.error.HTTPError as e:
+    print(f"Error Code: {e.code}")
 except urllib.error.URLError as e:
     print(f"Error accessing the URL: {e}")
 except Exception as e:
