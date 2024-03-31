@@ -9,6 +9,10 @@ import urllib.request
 import sys
 import urllib.parse
 
+if len(sys.argv) != 3:
+    print("Usage: python script.py <URL> <email>")
+    sys.exit(1)
+
 url = sys.argv[1]
 email = sys.argv[2]
 
