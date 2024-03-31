@@ -13,8 +13,17 @@ if __name__ == '__main__':
         print("Usage: python script.py <URL> <email>")
         exit(1)
     url = argv[1]
-    email = {'email': argv[2]}
+    email = argv[2]
 
-    response = requests.post(url, data=email)
-    print(response.text)
+    data = {'email': email}
+
+    try:
+        # Send a POST request with the email parameter
+        response = requests.post(url, data=data)
+        print(response.text)
+
+    except requests.RequestException as e:
+        print(f"Error accessing the URL: {e}")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
 
